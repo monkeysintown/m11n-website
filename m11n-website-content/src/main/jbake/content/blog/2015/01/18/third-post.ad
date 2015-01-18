@@ -1,0 +1,23 @@
+= Third Post
+Aleksandar Vidakovic
+2015-01-18
+:jbake-type: post
+:jbake-status: published
+:jbake-tags: blog, asciidoc
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel diam purus. Curabitur ut nisi lacus.
+
+* http://example.org
+* http://example.org[Example.org]
+
+== Highlight.js (via Github raw)
+++++
+<div hljs include="'https://gist.githubusercontent.com/mojavelinux/5333524/raw/greeter.rb'" language="ruby">
+</div>
+++++
+
+== Gist (via angular-gist directive)
+++++
+<gist id="5333524">
+</gist>
+++++
