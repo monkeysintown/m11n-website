@@ -151,6 +151,8 @@
                         <message>Creating site for ${project.version}</message>
                         <branch>refs/heads/master</branch>
                         <noJekyll>true</noJekyll>
+                        <userName>${github.username}</userName>
+                        <password>${github.password}</password>
                         <repositoryOwner>monkeysintown</repositoryOwner>
                         <repositoryName>monkeysintown.github.io</repositoryName>
                         <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
@@ -277,6 +279,8 @@
                     <artifactId>jgitflow-maven-plugin</artifactId>
                     <version>1.0-m4.3</version>
                     <configuration>
+                        <username>${github.username}</username>
+                        <password>${github.password}</password>
                         <allowSnapshots>true</allowSnapshots>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <pushReleases>true</pushReleases>
