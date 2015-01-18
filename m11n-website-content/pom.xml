@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.github.monkeysintown</groupId>
         <artifactId>m11n-website</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>m11n-website-content</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <packaging>war</packaging>
     <name>Monkeys in Town Website :: Content</name>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>m11n-website-assets</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.2-SNAPSHOT</version>
             <classifier>theme</classifier>
             <type>zip</type>
         </dependency>
