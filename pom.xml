@@ -4,7 +4,7 @@
 
     <groupId>com.github.monkeysintown</groupId>
     <artifactId>m11n-website</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <packaging>pom</packaging>
     <name>Monkeys in Town Website</name>
@@ -64,10 +64,18 @@
         <thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
     </properties>
 
+    <!--
     <distributionManagement>
         <repository>
             <id>bintray</id>
             <url>https://api.bintray.com/maven/cheetah/monkeysintown/m11n-website</url>
+        </repository>
+    </distributionManagement>
+    -->
+    <distributionManagement>
+        <repository>
+            <id>m11n-local</id>
+            <url>file://${env.MAVEN_REPO}</url>
         </repository>
     </distributionManagement>
 
@@ -149,6 +157,8 @@
                         <message>Creating site for ${project.version}</message>
                         <branch>refs/heads/master</branch>
                         <noJekyll>true</noJekyll>
+                        <userName>${github.username}</userName>
+                        <password>${github.password}</password>
                         <repositoryOwner>monkeysintown</repositoryOwner>
                         <repositoryName>monkeysintown.github.io</repositoryName>
                         <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
@@ -158,7 +168,7 @@
                             <goals>
                                 <goal>site</goal>
                             </goals>
-                            <phase>site</phase>
+                            <phase>deploy</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -275,10 +285,12 @@
                     <artifactId>jgitflow-maven-plugin</artifactId>
                     <version>1.0-m4.3</version>
                     <configuration>
+                        <username>${github.username}</username>
+                        <password>${github.password}</password>
                         <allowSnapshots>true</allowSnapshots>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <pushReleases>true</pushReleases>
-                        <noDeploy>true</noDeploy>
+                        <noDeploy>false</noDeploy>
                         <noReleaseBuild>false</noReleaseBuild>
                         <noFeatureBuild>false</noFeatureBuild>
                         <noHotfixBuild>false</noHotfixBuild>
