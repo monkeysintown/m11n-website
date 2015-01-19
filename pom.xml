@@ -174,6 +174,76 @@
                 </plugin>
 
                 <plugin>
+                    <groupId>com.github.jeluard</groupId>
+                    <artifactId>plantuml-maven-plugin</artifactId>
+                    <version>7954</version>
+                    <configuration>
+                        <outputInSourceDirectory>true</outputInSourceDirectory>
+                        <config>
+                        </config>
+                        <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+                        <sourceFiles>
+                            <directory>${project.basedir}/src/main/jbake/content/</directory>
+                            <includes>
+                                <include>**/*.puml</include>
+                            </includes>
+                        </sourceFiles>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>plantuml-png</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <format>png</format>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>plantuml-svg</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <format>svg</format>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.plantuml</groupId>
+                            <artifactId>plantuml</artifactId>
+                            <version>8018</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.7</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                            <phase>package</phase>
+                            <configuration>
+                                <target>
+                                    <move todir="${project.build.directory}/${project.build.finalName}">
+                                        <fileset dir="${project.basedir}/src/main/jbake/content">
+                                            <include name="**/*.png" />
+                                            <include name="**/*.svg" />
+                                        </fileset>
+                                    </move>
+                                </target>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
                     <groupId>br.com.ingenieux</groupId>
                     <artifactId>jbake-maven-plugin</artifactId>
                     <version>0.0.9</version>
